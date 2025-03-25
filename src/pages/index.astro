@@ -16,59 +16,60 @@ import SectionContainer from '@/components/SectionContainer.astro';
 import SocialPill from '@/components/SocialPill.astro';
 ---
 
-<Layout title="Porfolio de srgobi - Desarrollador y Programador Web con 5 años de experiencia" description="Contrata a srgobi para crear tu aplicación web o móvil. Desarrollador Web Full-Stack. Especializado en crear aplicaciones únicas.">
-	<main class="px-4 z-10">
-		<SectionContainer class="py-16 md:py-36">
-			<!-- <img class="rounded-full size-12 mb-4" src="/icons/apple-touch-icon-152x152.png" alt="srgobi logo" /> -->
-			<h1 class="text-zinc-900 dark:text-zinc-100 text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
-				Hey, I'm Tewayne
-			</h1>
-			<h2 class="text-xl lg:text-2xl text-balance max-w-[700px] text-zinc-900 dark:text-zinc-100">
-				<span class="text-yellow-800 dark:text-yellow-200"> Full-Stack Web Developer</span><span> with 7+ years of experience</span>
-				<span class="text-red-800 dark:text-red-200"> based in Tyler, Texas</span>
-				<span class="text-sky-800 dark:text-sky-200">, specializing in building unique, user-focused web applications.</span>
-			</h2>
+<Layout
+    title="Tewayne's Portfolio - Web Developer and Programmer with 7 years of experience"
+    description="Hire Tewayne to create your web or mobile app. Full-stack web developer. Specialized in creating unique applications."
+>
+    <main class="px-4 z-10">
+        <SectionContainer class="py-16 md:py-36">
+            <!-- <img class="rounded-full size-12 mb-4" src="/icons/apple-touch-icon-152x152.png" alt="tewayne logo" /> -->
+            <h1 class="text-zinc-900 dark:text-zinc-100 text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">Hey, I'm Tewayne</h1>
+            <h2 class="text-xl lg:text-2xl text-balance max-w-[700px] text-zinc-900 dark:text-zinc-100">
+                <span class="text-yellow-800 dark:text-yellow-200"> Full-Stack Web Developer</span><span> with 7+ years of experience</span>
+                <span class="text-red-800 dark:text-red-200"> based in Tyler, Texas</span>
+                <span class="text-sky-800 dark:text-sky-200">, specializing in building unique, user-focused web applications.</span>
+            </h2>
 
-			<nav class="flex gap-4 mt-8 flex-wrap">
-				<!-- <SocialPill href="https://linkedin.com/in/srgobi">
-					<LinkedInIcon class="size-4 md:size-6" />
-					LinkedIn
-				</SocialPill> -->
-				<SocialPill href="https://github.com/webboxesdeveloper">
-					<GitHubIcon class="size-4 md:size-6" />
-					GitHub
-				</SocialPill>
-				<SocialPill href="mailto:tewayne319@gmail.com">
-					<MailIcon class="size-4 md:size-6" />
-					tewayne319@gmail.com
-				</SocialPill>
-			</nav>
-		</SectionContainer>
+            <nav class="flex gap-4 mt-8 flex-wrap">
+                <SocialPill href="https://www.linkedin.com/in/tewaynelee0">
+                    <LinkedInIcon class="size-4 md:size-6" />
+                    LinkedIn
+                </SocialPill>
+                <SocialPill href="https://github.com/webboxesdeveloper">
+                    <GitHubIcon class="size-4 md:size-6" />
+                    GitHub
+                </SocialPill>
+                <SocialPill href="mailto:tewaynelee0@gmail.com">
+                    <MailIcon class="size-4 md:size-6" />
+                    tewaynelee0@gmail.com
+                </SocialPill>
+            </nav>
+        </SectionContainer>
 
-		<div class="space-y-24">
-			<SectionContainer id="experiencia">
-				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
-					<Briefcase class="size-7" />
-					Work Experience
-				</h2>
-				<Experience />
-			</SectionContainer>
+        <div class="space-y-24">
+            <SectionContainer id="experiencia">
+                <h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
+                    <Briefcase class="size-7" />
+                    Work Experience
+                </h2>
+                <Experience />
+            </SectionContainer>
 
-			<SectionContainer id="proyectos">
-				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
-					<CodeIcon class="size-7" />
-					Projects
-				</h2>
-				<Projects />
-			</SectionContainer>
+            <SectionContainer id="proyectos">
+                <h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
+                    <CodeIcon class="size-7" />
+                    Projects
+                </h2>
+                <Projects />
+            </SectionContainer>
 
-			<SectionContainer id="sobre-mi">
-				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
-					<ProfileCheck class="size-7" />
-					About me
-				</h2>
-				<AboutMe />
-			</SectionContainer>
-		</div>
-	</main>
+            <SectionContainer id="sobre-mi">
+                <h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
+                    <ProfileCheck class="size-7" />
+                    About me
+                </h2>
+                <AboutMe />
+            </SectionContainer>
+        </div>
+    </main>
 </Layout>

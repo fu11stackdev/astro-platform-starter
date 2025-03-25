@@ -1,21 +1,74 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ContextAlert from '../components/ContextAlert.astro';
-import Markdown from '../components/Markdown.astro';
+import '../styles/global.css';
+import Layout from '@/layouts/Layout.astro';
 
-const explainer = `
-An Astro website can go way beyond static pages - on the right platform.
-
-Netlify supports not only [Streaming SSR](https://docs.astro.build/en/guides/server-side-rendering/#html-streaming) and fast [Edge Middleware](https://docs.astro.build/en/guides/middleware/), but also [on-demand revalidation](https://www.netlify.com/blog/cache-tags-and-purge-api-on-netlify/) and [stale-while-revalidate](https://www.netlify.com/blog/swr-and-fine-grained-cache-control/). 
-Any page or data can be rebuilt only when needed, without site visitors ever getting a performance hit.
-`;
+import AboutMe from '@/components/AboutMe.astro';
+import Badge from '@/components/Badge.astro';
+import Briefcase from '@/components/icons/Briefcase.astro';
+import CodeIcon from '@/components/icons/Code.astro';
+import Experience from '@/components/Experience.astro';
+import GitHubIcon from '@/components/icons/GitHub.astro';
+import LinkedInIcon from '@/components/icons/LinkedIn.astro';
+import MailIcon from '@/components/icons/Mail.astro';
+import ProfileCheck from '@/components/icons/ProfileCheck.astro';
+import Projects from '@/components/Projects.astro';
+import SectionContainer from '@/components/SectionContainer.astro';
+import SocialPill from '@/components/SocialPill.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-    <ContextAlert class="mb-8" />
-    <h1 class="mb-10">Netlify Platform Starter for Astro</h1>
-    <Markdown content={explainer} class="mb-10 text-lg" />
-    <p>
-        <a href="https://docs.netlify.com/frameworks/astro/" class="btn btn-lg sm:min-w-64">Read the Docs</a>
-    </p>
+<Layout title="Porfolio de srgobi - Desarrollador y Programador Web con 5 años de experiencia" description="Contrata a srgobi para crear tu aplicación web o móvil. Desarrollador Web Full-Stack. Especializado en crear aplicaciones únicas.">
+	<main class="px-4 z-10">
+		<SectionContainer class="py-16 md:py-36">
+			<!-- <img class="rounded-full size-12 mb-4" src="/icons/apple-touch-icon-152x152.png" alt="srgobi logo" /> -->
+			<h1 class="text-zinc-900 dark:text-zinc-100 text-3xl md:text-4xl lg:text-5xl font-bold flex flex-row gap-x-4 pb-6 lg:pb-10">
+				Hey, I'm Tewayne
+			</h1>
+			<h2 class="text-xl lg:text-2xl text-balance max-w-[700px] text-zinc-900 dark:text-zinc-100">
+				<span class="text-yellow-800 dark:text-yellow-200"> Full-Stack Web Developer</span><span> with 7+ years of experience</span>
+				<span class="text-red-800 dark:text-red-200"> based in Tyler, Texas</span>
+				<span class="text-sky-800 dark:text-sky-200">, specializing in building unique, user-focused web applications.</span>
+			</h2>
+
+			<nav class="flex gap-4 mt-8 flex-wrap">
+				<!-- <SocialPill href="https://linkedin.com/in/srgobi">
+					<LinkedInIcon class="size-4 md:size-6" />
+					LinkedIn
+				</SocialPill> -->
+				<SocialPill href="https://github.com/webboxesdeveloper">
+					<GitHubIcon class="size-4 md:size-6" />
+					GitHub
+				</SocialPill>
+				<SocialPill href="mailto:tewayne319@gmail.com">
+					<MailIcon class="size-4 md:size-6" />
+					tewayne319@gmail.com
+				</SocialPill>
+			</nav>
+		</SectionContainer>
+
+		<div class="space-y-24">
+			<SectionContainer id="experiencia">
+				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
+					<Briefcase class="size-7" />
+					Work Experience
+				</h2>
+				<Experience />
+			</SectionContainer>
+
+			<SectionContainer id="proyectos">
+				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
+					<CodeIcon class="size-7" />
+					Projects
+				</h2>
+				<Projects />
+			</SectionContainer>
+
+			<SectionContainer id="sobre-mi">
+				<h2 class="text-3xl font-semibold mb-6 flex gap-x-3 items-center text-zinc-900/90 dark:text-zinc-100/90">
+					<ProfileCheck class="size-7" />
+					About me
+				</h2>
+				<AboutMe />
+			</SectionContainer>
+		</div>
+	</main>
 </Layout>

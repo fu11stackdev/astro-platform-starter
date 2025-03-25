@@ -1,34 +1,184 @@
 ---
-import '../../src/styles/globals.css';
-import '@fontsource-variable/inter/wght.css';
-import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import '@fontsource-variable/onest';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
     title: string;
+    description: string;
 }
 
-const { title } = Astro.props;
+const { description, title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es" class="dark">
     <head>
         <meta charset="UTF-8" />
-        <title>{title}</title>
-        <meta name="viewport" content="width=device-width" />
+        <!-- <base href="https://srgobi.com/" target="_blank" /> -->
+        <!-- <base href="http://localhost:4321/" target="_blank" /> -->
+        <link rel="canonical" href="https://srgobi.com/" />
+        <meta name="og:type" content="website" />
+        <meta name="og:url" content="https://srgobi.com" />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="https://srgobi.com/wallpaper.png" />
+        <meta name="og:lacale" content="es-ES" />
+        <meta name="theme-color" content="#5865F2" />
+        <meta name="application-name" content={title} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@srgobi" />
+        <meta name="twitter:site:id" content="@srgobi" />
+        <meta name="twitter:creator" content="@srgobi" />
+        <meta name="twitter:creator:id" content="@srgobi" />
+        <meta property="twitter:image" content="https://srgobi.com/wallpaper.png" data-react-helmet="true" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Favicon -->
+        <link rel="icon" href="/icons/srgobi.ico" type="image/x-icon" />
+
+        <!-- Apple Touch Icons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon-180x180.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="/icons/apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="/icons/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="/icons/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/icons/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="60x60" href="/icons/apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png" />
+
+        <!-- Android Icons -->
+        <link rel="icon" sizes="512x512" href="/icons/android-chrome-512x512.png" />
+        <link rel="icon" sizes="192x192" href="/icons/android-chrome-192x192.png" />
+        <link rel="icon" sizes="144x144" href="/icons/android-chrome-144x144.png" />
+        <link rel="icon" sizes="96x96" href="/icons/android-chrome-96x96.png" />
+
         <meta name="generator" content={Astro.generator} />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="preload" as="font" type="font/woff2" href={interWoff2} crossorigin />
+        <title>{title}</title>
+        <ClientRouter />
     </head>
-    <body class="antialiased text-white bg-complementary">
-        <div class="flex flex-col min-h-screen px-6 bg-noise sm:px-12">
-            <div class="flex flex-col w-full max-w-5xl mx-auto grow">
-                <Header />
-                <main class="grow"><slot /></main>
-                <Footer />
-            </div>
-        </div>
+
+    <body class="relative bg-zinc-100 dark:bg-black text-zinc-900 dark:text-zinc-100">
+        <div class="absolute top-0 z-[-2] h-screen w-full bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(68,90,255,0.3),rgba(255,255,255,0))]"></div>
+        <Header />
+        <slot />
+        <Footer />
+        <style is:global>
+            :root {
+                color-scheme: light dark;
+            }
+
+            html {
+                font-family: 'Onest Variable', system-ui, sans-serif;
+                scroll-behavior: smooth;
+            }
+
+            ::-webkit-scrollbar {
+                width: 0.6vh;
+                background-color: transparent;
+            }
+
+            ::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.72, rgb(68 90 255)), color-stop(0.86, rgb(0 0 0)));
+            }
+
+            ::-webkit-scrollbar-track {
+                box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+                -webkit-box-shadow: inset 0 0 6px rgb(0 0 0 / 30%);
+                background-color: rgb(10 10 10 / 1);
+            }
+
+            body {
+                color: rgba(255, 255, 255, 1);
+                display: flex;
+                flex-direction: column;
+                min-height: 100vh;
+                overscroll-behavior: none;
+            }
+
+            body:before {
+                content: '';
+                background-color: transparent;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+                background-repeat: repeat;
+                -webkit-background-size: 182px;
+                -moz-background-size: 182px;
+                -o-background-size: 182px;
+                background-size: 182px;
+                opacity: 0.1;
+                top: 0;
+                left: 0;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                html {
+                    scroll-behavior: auto;
+                }
+            }
+
+            #header-nav {
+                animation: blur linear both 0.5s;
+                animation-timeline: scroll();
+                animation-range: 0 500px;
+            }
+
+            @keyframes blur {
+                to {
+                    backdrop-filter: blur(20px);
+                    border-width: 1px;
+                    border-color: rgba(0, 0, 0);
+                    padding-left: 0.75rem;
+                    padding-right: 0.75rem;
+                    padding-top: 0.25rem;
+                    padding-bottom: 0.25rem;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    background-color: rgb(229, 229, 229);
+                    border-radius: 9999px;
+                }
+            }
+
+            @media (prefers-color-scheme: dark) {
+                @keyframes blur {
+                    from {
+                        border: 0px;
+                    }
+                    to {
+                        box-shadow:
+                            0px 5px 50px -5px rgba(125, 125, 125, 0.1),
+                            0px 0px 0 1px rgba(125, 125, 125, 0.3);
+                        background: rgba(125, 125, 125, 0.3);
+                        backdrop-filter: blur(20px);
+                        border-width: 1px;
+                        border-color: rgba(125, 125, 125);
+                        padding-left: 0.75rem;
+                        padding-right: 0.75rem;
+                        padding-top: 0.25rem;
+                        padding-bottom: 0.25rem;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        background-color: rgba(125, 125, 125, 0.3);
+                        border-radius: 9999px;
+                    }
+                }
+            }
+
+            .link-active {
+                background-color: rgba(255, 255, 255, 0.4);
+                font-weight: 600;
+                box-shadow:
+                    0 10px 15px -3px rgba(255, 255, 255, 0.2),
+                    0 4px 6px -2px rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(2rem);
+            }
+        </style>
     </body>
 </html>

@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import netlify from '@astrojs/netlify';
+import robotsTxt from 'astro-robots-txt';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 
@@ -8,6 +9,6 @@ export default defineConfig({
     vite: {
         plugins: [tailwindcss()]
     },
-    integrations: [react()],
+    integrations: [react(), robotsTxt()],
     adapter: netlify()
 });

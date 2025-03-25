@@ -1,0 +1,37 @@
+---
+import ExperienceItem from './ExperienceItem.astro';
+
+const EXPERIENCIE = [
+	{
+		date: '2023 - 2025',
+		company: "Kiswe",
+		title: 'Software Engineer',
+		description:
+			"I helped build real-time fan engagement tools that brought live events to life. I led the development of interactive features like live chat and digital cheering, which boosted audience participation by 20%. I also created Fan Reacts, letting fans submit video selfies shown during streams — a feature that strengthened community interaction. To give users control, I built a synchronized multi-camera system so fans could switch views without missing a beat. I worked closely with product teams to align with broadcaster needs and contributed to analytics dashboards that turned raw fan data into actionable insights — all while maintaining strong privacy standards."
+	},
+	{
+		date: '2019 - 2023',
+		company: "Coolmath Games",
+		title: 'Software Engineer',
+		description:
+			"I developed fast, real-time multiplayer HTML5 games using Pixi.js and WebSockets, keeping latency under 100ms for smooth, responsive gameplay. I integrated ads and Google Tag Manager to enable A/B testing and user analytics, leading to a 15% boost in engagement. To support traffic surges of 10K+ concurrent players, I implemented an auto-scaling DevOps setup, ensuring performance remained rock-solid during peak hours. My work combined frontend responsiveness with backend scalability to deliver a seamless experience for millions of players."
+	},
+	{
+		date: '2018 - 2019',
+		company: "Files.com",
+		title: 'Software Engineer',
+		description:
+			"I focused on building tools that power secure, large-scale file automation for enterprise users. I developed a scalable file conversion engine that transforms PDFs into XML, Doc, and Excel formats with 100% accuracy, simplifying data integration across platforms. To support developer adoption, I built and maintained a JavaScript SDK for managing files and resources via API. This streamlined integration and contributed to a 30% increase in third-party usage of Files.com services. I also implemented real-time webhook events, allowing users to receive instant updates on file activity. This significantly improved system responsiveness and enabled clients to build more reactive, automated workflows."
+	}
+];
+---
+
+<ol class="relative mt-16">
+	{
+		EXPERIENCIE.map((experiencie) => (
+			<li class="">
+				<ExperienceItem {...experiencie} />
+			</li>
+		))
+	}
+</ol>

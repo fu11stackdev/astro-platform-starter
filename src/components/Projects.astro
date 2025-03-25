@@ -1,0 +1,191 @@
+---
+import LinkButton from './LinkButton.astro';
+import { TAGS } from './TagsIcons.astro';
+import ExitIcon from '@/components/icons/Exit.astro';
+
+const PROJECTS = [
+	{
+		title: 'Kiswe - Live Chat',
+		description:
+			`A web-based platform designed to bring fans closer to live events by making the experience interactive and participatory.
+			The project featured real-time tools like live chat, digital cheering, and video selfie submissions that could appear directly in the broadcast. Fans could also personalize their viewing with a multi-camera system, switching angles without losing sync.
+			The system relied on WebSockets for real-time communication, Redis for fast caching, and RabbitMQ to manage high-volume fan reactions smoothly.`,
+		link: 'https://www.kiswe.com/fan-engagement',
+		image: ['/projects/kiswe.webp'],
+		tags: [TAGS.PYTHON, TAGS.REACT, TAGS.HTML, TAGS.TYPESCRIPT]
+	},
+	{
+		title: 'Coolmath - Hangman',
+		description:
+			`A fast-paced, browser-based Hangman game built for Coolmath Games, supporting both single-player and multiplayer modes. Players could jump into a quick match or create private games to challenge friends in real time.
+			Built using Pixi.js for smooth canvas-based animations, and powered by Colyseus and WebSockets for responsive multiplayer interactions.
+			The game was developed with a focus on fast iteration and minimal latency, ensuring a seamless experience even during peak traffic.
+			This project balanced game logic, performance, and UI polish — all delivered under tight timelines for a high-traffic gaming platform.`,
+		link: 'https://www.coolmathgames.com/0-hangman',
+		image: ['/projects/hangman.webp'],
+		tags: [TAGS.TYPESCRIPT, TAGS.NODE, TAGS.REACT, TAGS.PIXI, TAGS.DOCKER]
+	},
+	{
+		title: 'Coolmath - Grabble',
+		description:
+			`A modern multiplayer upgrade of a classic word game, originally built with static HTML/CSS and revamped into a dynamic, real-time experience using Angular, Node.js, and WebSockets.
+			Players could face off in live multiplayer matches or play against AI opponents, with multiple bot difficulty levels to keep the challenge fresh. A lightweight Python engine was integrated to validate words in real time using a dictionary lookup — essential for smooth gameplay and fairness.
+			This rebuild not only improved performance and responsiveness, but also opened up new features like matchmaking, live score updates, and a more engaging player experience overall.`,
+		link: 'https://www.coolmathgames.com/0-grabble',
+		image: ['/projects/grabble.webp'],
+		tags: [TAGS.TYPESCRIPT, TAGS.NODE, TAGS.ANGULAR, TAGS.BOOTSTRAP, TAGS.MONGODB]
+	},
+	{
+		title: 'Files.com SDK Suite – JavaScript, Python, Java',
+		description:
+			`Led the development and evolution of cross-language SDKs to make Files.com’s powerful file automation platform accessible to developers across different ecosystems.
+			Starting with the JavaScript SDK, I built a modern, developer-friendly library (available on npm) that wrapped Files.com’s REST API for tasks like file uploads, folder management, and automated transfers. Special attention was given to clean interfaces, comprehensive error handling, and full TypeScript support.
+			The project expanded into Python and Java, where I helped design SDKs that followed each language’s conventions, included detailed inline documentation, and offered consistent feature parity. These SDKs enabled developers to quickly embed file workflows—uploads, transfers, automation triggers—into their applications with minimal boilerplate.
+			The SDKs were also designed to work seamlessly with Files.com’s advanced platform features like webhook support, automation rules, and API-based file orchestration. Each release was backed by automated tests, versioned API compatibility, and ongoing feedback from internal teams and external developers.
+			This SDK suite became the foundation for third-party integrations and internal tools alike—dramatically improving onboarding, reducing friction in API adoption, and expanding the reach of Files.com into developer-driven environments.`,
+		link: 'https://developers.files.com/javascript/overview/introduction/',
+		image: ['/projects/files.webp'],
+		tags: [TAGS.TYPESCRIPT, TAGS.PYTHON, TAGS.DOCKER, TAGS.GITHUB]
+	}
+];
+---
+
+<div class="flex flex-col gap-y-16">
+	{
+		PROJECTS.map(({ image, title, description, tags, link }) => (
+			<article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+				<div class="w-full md:w-1/2">
+					<div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-zinc-800 lg:hover:border-zinc-700 lg:hover:bg-zinc-800/50">
+						<label for={`image-modal-toggle-${title}`} class="cursor-pointer">
+							<img alt="Recién llegado vs 5 años en Nueva Zelanda" class="object-cover object-top w-full h-full transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" loading="lazy" src={image[0]} />
+						</label>
+					</div>
+				</div>
+
+				<div class="w-full md:w-1/2 md:max-w-lg">
+					<h3 class="text-2xl font-bold text-zinc-800 dark:text-zinc-100">{title}</h3>
+					<div class="flex flex-wrap mt-2">
+						<ul class="flex xl:flex-row flex-wrap mb-2 gap-2">
+							{tags.map((tag) => (
+								<li>
+									<span class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}>
+										<tag.icon class="size-4" />
+										{tag.name}
+									</span>
+								</li>
+							))}
+						</ul>
+						<div class="mt-2 text-zinc-700 dark:text-zinc-400">
+							{description.length > 200 ? (
+								<>
+									{/* Mostramos los primeros 200 caracteres */}
+									<p>{description.slice(0, 200)}...</p>
+									{/* Botón para ver la descripción completa */}
+									<label for={`modal-toggle-${title}`} class="flex items-center gap-2 group-hover:underline decoration-zinc-500 decoration-dotted underline-offset-4 cursor-pointer">
+										See more details
+										<svg width="13" height="13" stroke="currentColor" stroke-width="2" class="lucide-icon lucide lucide-arrow-up-right opacity-50 duration-200 group-hover:translate-x-[1.5px] group-hover:opacity-100" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+											<path d="M7 7h10v10" />
+											<path d="M7 17 17 7" />
+										</svg>
+									</label>
+									<div>
+										{/* Modal para la imagen ampliada */}
+										<input type="checkbox" id={`image-modal-toggle-${title}`} class="hidden peer" />
+										<div class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full md:inset-0 max-h-full backdrop-blur-2xl transition peer-checked:flex hidden">
+											<div class="relative p-4 w-full max-w-max">
+												<div class="relative bg-neutral-200 dark:bg-black rounded-lg shadow-sm">
+													<label for={`image-modal-toggle-${title}`} class="absolute top-2 right-2 bg-white/5 border-2 dark:border-white/10 border-zinc-300 rounded-full p-1 cursor-pointer">
+														<ExitIcon class="size-4 text-zinc-300 dark:text-zinc-100" />
+														<span class="sr-only">Close modal</span>
+													</label>
+													<img src={image[0]} alt={`Imagen ampliada de ${title}`} class="object-cover w-[100vh] h-full rounded-lg" />
+												</div>
+											</div>
+										</div>
+									</div>
+									<div>
+										{/* Modal para la descripción completa */}
+										<input type="checkbox" id={`modal-toggle-${title}`} class="hidden peer" />
+										<div class="fixed top-0 right-0 left-0 z-50 justify-center items-center w-full h-full md:inset-0 max-h-full backdrop-blur-2xl transition peer-checked:flex hidden">
+											<div class="relative p-4 w-full max-w-2xl max-h-full">
+												<div class="relative bg-neutral-200 dark:bg-black rounded-lg shadow-sm">
+													<div class="flex items-center justify-between p-4 md:p-5 border-b dark:border-white/10 border-zinc-300 rounded-t">
+														<h3 class="text-xl font-semibold text-gray-900 dark:text-zinc-100">Details of {title}</h3>
+														<label for={`modal-toggle-${title}`} class="bg-white/5 border dark:border-white/10 border-zinc-300 rounded-full inline-flex justify-center items-center gap-x-2 py-1 px-2 md:py-2 md:px-4 text-xs md:text-base transition hover:scale-110 hover:bg-white/10 cursor-pointer">
+															<ExitIcon class="size-4 text-zinc-900/90 dark:text-zinc-100/90" />
+															<span class="sr-only">Close modal</span>
+														</label>
+													</div>
+													<div class="p-4 md:p-5 space-y-4 max-h-[60vh] overflow-y-auto">
+														<p style={{ whiteSpace: 'pre-line' }}>{description}</p>
+													</div>
+													<div class="flex items-center p-4 md:p-5 border-t dark:border-white/10 border-zinc-300 rounded-b">
+														<label for={`modal-toggle-${title}`} class="bg-white/5 border dark:border-white/10 border-zinc-300 rounded-full inline-flex justify-center items-center gap-x-2 py-1 px-2 md:py-2 md:px-4 text-xs md:text-base transition hover:scale-110 hover:bg-white/10 cursor-pointer">
+															Close
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</>
+							) : (
+								<p style={{ whiteSpace: 'pre-line' }}>{description}</p>
+							)}
+						</div>
+						<footer class="flex gap-x-4 items-end justify-start mt-4">
+							<LinkButton href={link}>
+								<svg width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M19.5 7a9 9 0 0 0 -7.5 -4a8.991 8.991 0 0 0 -7.484 4" />
+									<path d="M11.5 3a16.989 16.989 0 0 0 -1.826 4" />
+									<path d="M12.5 3a16.989 16.989 0 0 1 1.828 4" />
+									<path d="M19.5 17a9 9 0 0 1 -7.5 4a8.991 8.991 0 0 1 -7.484 -4" />
+									<path d="M11.5 21a16.989 16.989 0 0 1 -1.826 -4" />
+									<path d="M12.5 21a16.989 16.989 0 0 0 1.828 -4" />
+									<path d="M2 10l1 4l1.5 -4l1.5 4l1 -4" />
+									<path d="M17 10l1 4l1.5 -4l1.5 4l1 -4" />
+									<path d="M9.5 10l1 4l1.5 -4l1.5 4l1 -4" />
+								</svg>
+								Go to the website
+							</LinkButton>
+						</footer>
+					</div>
+				</div>
+			</article>
+		))
+	}
+</div>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const modalIds = [
+			'modal-toggle-Goblin Ajedrez - Juego de ajedrez online',
+			'modal-toggle-CMS - Incantatem',
+			'modal-toggle-ESP CUSTOMS LLC',
+			'modal-toggle-AuraFut - Ecommerce',
+			'modal-toggle-Canvacard - NPM',
+			'modal-toggle-App Discord Peereira7',
+			'modal-toggle-LibertadCripto - ComuniDAO',
+			'image-modal-toggle-Goblin Ajedrez - Juego de ajedrez online',
+			'image-modal-toggle-CMS - Incantatem',
+			'image-modal-toggle-ESP CUSTOMS LLC',
+			'image-modal-toggle-AuraFut - Ecommerce',
+			'image-modal-toggle-Canvacard - NPM',
+			'image-modal-toggle-App Discord Peereira7',
+			'image-modal-toggle-LibertadCripto - ComuniDAO'
+		];
+
+		modalIds.forEach((id) => {
+			const modal = document.getElementById(id);
+			if (modal) {
+				modal.addEventListener('change', () => {
+					if ((modal as HTMLInputElement).checked) {
+						document.body.classList.add('overflow-hidden');
+					} else {
+						document.body.classList.remove('overflow-hidden');
+					}
+				});
+			}
+		});
+	});
+</script>
